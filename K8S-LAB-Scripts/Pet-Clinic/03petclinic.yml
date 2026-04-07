@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-deployment
+  labels:
+    app: petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic
+  template:
+    metadata:
+      labels:
+        app: petclinic
+      annotations:
+        co.elastic.metrics/module: prometheus
+        co.elastic.metrics/hosts: '${data.host}:${data.port}'
+        co.elastic.metrics/metrics_path: '/metrics/prometheus'
+        co.elastic.metrics/period: 1m
+
+        # Commented out because of ECS logging below
+        # co.elastic.logs/multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+        # co.elastic.logs/multiline.negate: "true"
+        # co.elastic.logs/multiline.match: "after"
+
+        co.elastic.logs/type: "log"
+        co.elastic.logs/json.keys_under_root: "true"
+        co.elastic.logs/json.overwrite_keys: "true"
+    spec:
+      containers:
+        - name: petclinic
+          image: docker.io/michaelhyatt/elastic-k8s-o11y-workshop-petclinic:1.25.0
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          resources:
+            requests:
+              memory: "512M"
+            limits:
+              memory: "850M"
+          env:
+          - name: ELASTIC_APM_SERVER_URLS
+            valueFrom:
+              secretKeyRef:
+                name: apm-secret
+                key: apm-url
+          - name: ELASTIC_APM_SERVER_URLS_FOR_RUM
+            valueFrom:
+              secretKeyRef:
+                name: apm-secret
+                key: apm-url
+          - name: ELASTIC_APM_SECRET_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: apm-secret
+                key: apm-token
+          - name: ELASTIC_APM_SERVICE_NAME
+            value: spring-petclinic-monolith
+          - name: ELASTIC_APM_APPLICATION_PACKAGES
+            value: org.springframework.samples
+          - name: ELASTIC_APM_ENABLE_LOG_CORRELATION
+            value: "true"
+          - name: ELASTIC_APM_CAPTURE_JMX_METRICS
+            value: >-
+              object_name[java.lang:type=GarbageCollector,name=*] attribute[CollectionCount:metric_name=collection_count] attribute[CollectionTime:metric_name=collection_time],
+              object_name[java.lang:type=Memory] attribute[HeapMemoryUsage:metric_name=heap]
+          - name: JAVA_OPTS
+            value: >-
+              -Xms512M
+              -Xmx1G
+              -Dspring.profiles.active=mysql
+              -Ddatabase=mysql
+              -Dspring.datasource.username=root
+              -Dspring.datasource.password=petclinic
+              -Dspring.datasource.initialization-mode=always
+              -Dspring.datasource.url=jdbc:mysql://mysql-service:3306/petclinic?autoReconnect=true&useSSL=false
+              -XX:+StartAttachListener
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: petclinic-service
+  annotations:
+    co.elastic.monitor/name: petclinic-http-svc
+    co.elastic.monitor/type: http
+    co.elastic.monitor/hosts: petclinic-service.default.svc.cluster.local:8080/
+    co.elastic.monitor/schedule: "@every 5s"
+spec:
+  selector:
+    app: petclinic
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer
