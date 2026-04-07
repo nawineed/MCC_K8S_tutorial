@@ -1,0 +1,33 @@
+Prerequisites
+1. Ubuntu 22.04.5 OS requirements
+vi /etc/hosts
+#Add hostname for resolve itself
+10.200.124.197 mccubuntu
+
+#Check OS Swap file status
+free -h
+#Swap Off
+root@mccubuntu:/SWinstall# free -h
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       341Mi        30Gi       1.0Mi       791Mi        30Gi
+Swap:             0B          0B          0B------------------------------------------->
+
+#Swap On
+root@mccubuntu:/SWinstall# free -h
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       350Mi        30Gi       1.0Mi       790Mi        30Gi
+Swap:          8.0Gi          0B       8.0Gi------------------------------------------->
+#If Swap is "on" please turn off by following command
+swapoff -a
+
+2. Package requirement
+sudo apt install git tmux -y
+
+3. Clone shell script from github for K8S single node installation
+git clone https://github.com/nawineed/MCC_K8S_tutorial.git
+
+4. Change directory to source file for running script
+cd ~/MCC_K8S_tutorial
+
+5. Run shell script  for K8S single node installation
+
