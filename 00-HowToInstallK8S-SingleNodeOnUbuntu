@@ -27,7 +27,7 @@ sudo apt install git tmux -y
 git clone https://github.com/nawineed/MCC_K8S_tutorial.git
 
 4. Change directory to source file for running script
-cd ~/MCC_K8S_tutorial
+cd ~/MCC_K8S_tutorial/K8S-LAB-Scripts
 
 5. Run shell script  for K8S single node installation
 ./k8s_single_node_installer.sh
