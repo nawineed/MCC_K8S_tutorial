@@ -18,3 +18,18 @@ kubectl get service
 #show
 NAME                TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 mysql-service       ClusterIP      10.106.108.21    <none>        3306/TCP         4m45s
+
+3. Verify pod created
+kubectl get pod
+NAME                                   READY   STATUS    RESTARTS   AGE
+mysql-deployment-7b769d8d57-vnrth      1/1     Running   0          43m
+
+4. Verify pod status and detail
+kubecte describe pod mysql-deployment-7b769d8d57-vnrth
+
+5. Check log Application or MiddleWare on pod without execute into pod
+kubectl logs mysql-deployment-7b769d8d57-vnrth
+
+6. Test excute in pod
+kubectl exec -it mysql-deployment-7b769d8d57-vnrth -- /bin/bash
+
