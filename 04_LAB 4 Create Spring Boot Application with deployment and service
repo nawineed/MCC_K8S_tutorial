@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------
-LAB 3 Create Spring Boot Application with deployment and service
+LAB 4 Create Spring Boot Application with deployment and service
 --------------------------------------------------------------------------------------------
 kubectl create -f petclinic/petclinic.yml
 #show
