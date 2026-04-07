@@ -18,3 +18,19 @@ kubectl get service
 #show
 mysql-service       ClusterIP      10.106.108.21    <none>        3306/TCP         4m45s
 petclinic-service   LoadBalancer   10.106.173.212   <pending>     8080:31490/TCP   2m8s
+
+3. Verify pod created
+kubectl get pod
+NAME                                   READY   STATUS    RESTARTS   AGE
+mysql-deployment-7b769d8d57-vnrth      1/1     Running   0          52m
+petclinic-deployment-b7b7899bd-rpmgs   1/1     Running   0          49m
+
+
+4. Verify pod status and detail
+kubecte describe pod petclinic-deployment-b7b7899bd-rpmgs
+
+5. Check log Application or MiddleWare on pod without execute into pod
+kubectl logs petclinic-deployment-b7b7899bd-rpmgs
+
+6. Test excute in pod
+kubectl exec -it petclinic-deployment-b7b7899bd-rpmgs -- /bin/bash
