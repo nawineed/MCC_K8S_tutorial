@@ -1,0 +1,11 @@
+--------------------------------------------------------------------------------------------
+LAB 6 PetClinic Application Testing
+--------------------------------------------------------------------------------------------
+#Test by use following URL on web browser
+http://yourK8SIPAddress:30080/
+
+#Result
+1. Home Page -> This page interactive with nginx
+2. Find Owners Page -> This page interactive with MySQL database
+3. Veterinarians Pages -> This page interactive with MySQL database
+4. Error Pages -> This page interactive with nginx
