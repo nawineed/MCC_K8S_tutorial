@@ -1,0 +1,20 @@
+--------------------------------------------------------------------------------------------
+LAB 2 Create MySql database with deployment and service
+--------------------------------------------------------------------------------------------
+kubectl create -f mysql/mysql.yml
+#show
+service/mysql-service created
+deployment.apps/mysql-deployment created
+
+1. Verify deployment created
+kubectl get deployment
+#show
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+mysql-deployment       1/1     1            1           4m13s
+
+
+2. Verify service created
+kubectl get service
+#show
+NAME                TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+mysql-service       ClusterIP      10.106.108.21    <none>        3306/TCP         4m45s
