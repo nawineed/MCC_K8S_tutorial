@@ -1,6 +1,7 @@
 --------------------------------------------------------------------------------------------
 LAB 3 Create MySql database with deployment and service
 --------------------------------------------------------------------------------------------
+cd ~/MCC_K8S_tutorial/K8S-LAB-Scripts/Pet-Clinic
 kubectl create -f 02mysql.yml
 #show
 service/mysql-service created
