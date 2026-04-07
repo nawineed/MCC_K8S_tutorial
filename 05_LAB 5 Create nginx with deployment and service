@@ -1,0 +1,29 @@
+--------------------------------------------------------------------------------------------
+LAB 5 Create nginx with deployment, configmap and service
+--------------------------------------------------------------------------------------------
+kubectl create -f nginx/nginx.yml
+#show
+deployment.apps/nginx created
+configmap/nginx-config created
+service/petclinic-nginx-service created
+
+1. Verify deployment created
+kubectl get deployment
+#show
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+mysql-deployment       1/1     1            1           19m
+nginx                  1/1     1            1           69s
+petclinic-deployment   1/1     1            1           17m
+
+2. Verify configmap created
+kubectl get configmap
+NAME               DATA   AGE
+kube-root-ca.crt   1      32m
+nginx-config       1      100s
+
+3. Verify service created
+kubectl get service
+NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+mysql-service             ClusterIP      10.106.108.21    <none>        3306/TCP         21m
+petclinic-nginx-service   LoadBalancer   10.108.153.106   <pending>     80:30080/TCP     3m
+petclinic-service         LoadBalancer   10.106.173.212   <pending>     8080:31490/TCP   19m
