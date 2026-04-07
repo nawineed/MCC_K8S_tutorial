@@ -1,0 +1,20 @@
+--------------------------------------------------------------------------------------------
+LAB 3 Create Spring Boot Application with deployment and service
+--------------------------------------------------------------------------------------------
+kubectl create -f petclinic/petclinic.yml
+#show
+deployment.apps/petclinic-deployment created
+service/petclinic-service created
+
+1. Verify deployment created
+kubectl get deployment
+#show
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+mysql-deployment       1/1     1            1           4m13s
+petclinic-deployment   1/1     1            1           96s
+
+2. Verify service created
+kubectl get service
+#show
+mysql-service       ClusterIP      10.106.108.21    <none>        3306/TCP         4m45s
+petclinic-service   LoadBalancer   10.106.173.212   <pending>     8080:31490/TCP   2m8s
