@@ -1,0 +1,13 @@
+--------------------------------------------------------------------------------------------
+LAB 1 Create namespace and set default current namespace
+--------------------------------------------------------------------------------------------
+1. Create namespace
+kubectl create ns pet-clinic
+
+2. List all namespaces to verify new namespace already exsiting
+kubectl get ns
+
+3. set default namespace to pet-clinic namespace
+kubectl config set-context --current --namespace=pet-clinic
+#show
+Context "kubernetes-admin@kubernetes" modified.
