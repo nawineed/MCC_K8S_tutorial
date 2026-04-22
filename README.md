@@ -12,8 +12,8 @@ System Requirements :::
 
 
 --------------------------------------------------------------------------------------
-PUTTY Download
+ESXi host for provision VM
 --------------------------------------------------------------------------------------
-https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.80-installer.msi
-
-
+https://10.200.125.42
+root
+password
