@@ -42,7 +42,7 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 mysql-deployment-7b769d8d57-vnrth      1/1     Running   0          43m ---------->
 
 4. Verify pod status and detail
-kubecte describe pod mysql-deployment-7b769d8d57-vnrth
+kubectel describe pod mysql-deployment-7b769d8d57-vnrth
 
 5. Check log Application or MiddleWare on pod without execute into pod
 kubectl logs mysql-deployment-7b769d8d57-vnrth
