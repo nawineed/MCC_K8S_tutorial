@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------
-LAB 5 Create nginx with deployment, configmap and service
+LAB 6 Create nginx with deployment, configmap and service
 --------------------------------------------------------------------------------------------
 cd ~/MCC_K8S_tutorial/K8S-LAB-Scripts/Pet-Clinic
 kubectl create -f 04nginx.yml
