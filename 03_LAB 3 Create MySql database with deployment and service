@@ -4,11 +4,17 @@ LAB 3 Create MySql database with deployment and service
 #Install nfs package on Ubuntu OS
 apt install -y nfs-common
 
+#Reboot server
+reboot
+
 cd ~/MCC_K8S_tutorial/K8S-LAB-Scripts/Pet-Clinic
 kubectl create -f 02mysql.yml
 #show
 service/mysql-service created
 deployment.apps/mysql-deployment created
+
+0. Verify pv created
+
 
 1. Verify deployment created
 kubectl get deployment
