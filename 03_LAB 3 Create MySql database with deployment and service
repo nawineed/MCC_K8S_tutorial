@@ -14,7 +14,9 @@ service/mysql-service created
 deployment.apps/mysql-deployment created
 
 0. Verify pv created
-
+kubectl get pv
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                      STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+mysql-nfs-pv   5Gi        RWO            Retain           Bound    pet-clinic/mysql-nfs-pvc   nfs-storage    <unset>                          19m
 
 1. Verify deployment created
 kubectl get deployment
