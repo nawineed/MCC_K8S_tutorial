@@ -39,8 +39,10 @@ exportfs
 /mnt/nfs_share   10.200.120.0/23
 
 6. Test mount NFS
-mkdir /tmp
 mount -t nfs yourIPAddress:/mnt/nfs_share /tmp
 
 7. Verify NFS can mount to /tmp
 df -h |grep :/mnt/nfs_share
+
+8. Umount NFS
+umount /tmp
