@@ -28,7 +28,7 @@ petclinic-deployment-b7b7899bd-rpmgs   1/1     Running   0          49m --------
 
 
 4. Verify pod status and detail
-kubecte describe pod petclinic-deployment-b7b7899bd-rpmgs
+kubectel describe pod petclinic-deployment-b7b7899bd-rpmgs
 
 5. Check log Application or MiddleWare on pod without execute into pod
 kubectl logs petclinic-deployment-b7b7899bd-rpmgs
