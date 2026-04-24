@@ -30,7 +30,7 @@ spec:
   mountOptions:
     - vers=4
   nfs:
-    server: 10.200.124.173
+    server: localhost
     path: /var/nfsshare
 
 ---
