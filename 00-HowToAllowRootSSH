@@ -1,3 +1,9 @@
+#swith user to root
+sudo su -
+
+#set root password
+passwd
+
 1. Edit ssh config file
 vi /etc/ssh/sshd_config
 #change
@@ -6,6 +12,6 @@ PermitRootLogin no
 PermitRootLogin yes
 
 2. restart SSH service
-systemctl restart sshd
+systemctl restart ssh
 
 3. Test SSH by root user
