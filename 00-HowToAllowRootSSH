@@ -1,0 +1,11 @@
+1. Edit ssh config file
+vi /etc/ssh/sshd_config
+#change
+PermitRootLogin no
+#To
+PermitRootLogin yes
+
+2. restart SSH service
+systemctl restart sshd
+
+3. Test SSH by root user
