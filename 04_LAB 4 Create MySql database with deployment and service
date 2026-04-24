@@ -15,7 +15,7 @@ cd ~/MCC_K8S_tutorial/K8S-LAB-Scripts/Pet-Clinic
 vi 02mysql.yml
   nfs:
     server: YourIPAddress -------------> change to your IP Address
-    path: /var/nfsshare
+    path: /mnt/nfs_share
 
 kubectl create -f 02mysql.yml
 #show
