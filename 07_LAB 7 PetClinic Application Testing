@@ -13,3 +13,4 @@ http://yourK8SIPAddress:30080/
 #Test delete pod for show data keep
 1. Add owner
 2. Delete pod
+kubectl delete pod YourPetclinicPodname
