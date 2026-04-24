@@ -38,7 +38,7 @@ petclinic-deployment-b7b7899bd-rpmgs   1/1     Running   0          49m
 
 
 5. Verify pod status and detail
-kubecte describe pod nginx-7d4bf67bc-hsn5r
+kubectel describe pod nginx-7d4bf67bc-hsn5r
 
 6. Check log Application or MiddleWare on pod without execute into pod
 kubectl logs nginx-7d4bf67bc-hsn5r
