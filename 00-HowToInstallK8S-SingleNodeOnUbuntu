@@ -46,7 +46,11 @@ git clone https://github.com/nawineed/MCC_K8S_tutorial.git
 cd ~/MCC_K8S_tutorial/K8S-LAB-Scripts
 
 5. Run shell script  for K8S single node installation
+chmod +x k8s_single_node_installer.sh
 ./k8s_single_node_installer.sh
 
-6. Allow master node to scheduler pod
+6. Verify K8S avalible
+kubectl version
+
+7. Allow master node to scheduler pod
 kubectl taint node mccubuntu node-role.kubernetes.io/control-plane:NoSchedule-
