@@ -9,7 +9,7 @@ mkdir -p /mnt/nfs_share
 chmod 777 /mnt/nfs_share
 
 2. Config NFS Server
-vi /etc/exportfs
+vi /etc/exports
 /mnt/nfs_share YourIPAddress/23(rw,sync,no_root_squash,no_all_squash,no_wdelay)
 
 3. Enable NFS server auto start
