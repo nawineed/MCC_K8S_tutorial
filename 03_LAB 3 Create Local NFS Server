@@ -1,0 +1,42 @@
+1. Install NFS Server Package
+apt install nfs-kernel-server -y
+
+mkdir -p /mnt/nfs_share
+chmod 777 /mnt/nfs_share
+
+2. Config NFS Server
+vi /etc/exportfs
+/var/nfsshare 10.200.120.0/23(rw,sync,no_root_squash,no_all_squash,no_wdelay)
+
+3. Enable NFS server auto start
+systemctl enable nfs-kernel-server --now
+
+4. check NFS Server service status
+systemctl status nfs-kernel-server.service
+#show
+Synchronizing state of nfs-kernel-server.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable nfs-kernel-server
+root@nawineedk82:~/MCC_K8S_tutorial/K8S-LAB-Scripts/Pet-Clinic# systemctl status nfs-kernel-server.service
+● nfs-server.service - NFS server and services
+     Loaded: loaded (/usr/lib/systemd/system/nfs-server.service; enabled; preset: enabled)
+    Drop-In: /run/systemd/generator/nfs-server.service.d
+             └─order-with-mounts.conf
+     Active: active (exited) since Fri 2026-04-24 08:53:03 UTC; 6min ago
+   Main PID: 3773 (code=exited, status=0/SUCCESS)
+        CPU: 39ms
+
+Apr 24 08:53:02 nawineedk82 systemd[1]: Starting nfs-server.service - NFS server and services...
+Apr 24 08:53:02 nawineedk82 exportfs[3771]: exportfs: can't open /etc/exports for reading
+Apr 24 08:53:03 nawineedk82 systemd[1]: Finished nfs-server.service - NFS server and services.
+
+5. List NFS Mount Point
+exportfs
+#show
+/mnt/nfs_share   10.200.120.0/23
+
+6. Test mount NFS
+mkdir /tmp
+mount -t nfs yourIPAddress:/mnt/nfs_share /tmp
+
+7. Verify NFS can mount to /tmp
+df -h |grep :/mnt/nfs_share
