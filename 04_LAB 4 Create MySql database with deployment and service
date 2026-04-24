@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------
-LAB 3 Create MySql database with deployment and service
+LAB 4 Create MySql database with deployment and service
 --------------------------------------------------------------------------------------------
 #Install nfs package on Ubuntu OS
 apt install -y nfs-common
