@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------
-LAB 6 PetClinic Application Testing
+LAB 7 PetClinic Application Testing
 --------------------------------------------------------------------------------------------
 #Test by use following URL on web browser
 http://yourK8SIPAddress:30080/
@@ -9,3 +9,7 @@ http://yourK8SIPAddress:30080/
 2. Find Owners Page -> This page interactive with MySQL database
 3. Veterinarians Pages -> This page interactive with MySQL database
 4. Error Pages -> This page interactive with nginx
+
+#Test delete pod for show data keep
+1. Add owner
+2. Delete pod
