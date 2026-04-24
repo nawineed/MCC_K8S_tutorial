@@ -11,6 +11,8 @@ cd ~/MCC_K8S_tutorial/K8S-LAB-Scripts/Pet-Clinic
 kubectl create -f 02mysql.yml
 #show
 service/mysql-service created
+persistentvolume/mysql-nfs-pv created
+persistentvolumeclaim/mysql-nfs-pvc created
 deployment.apps/mysql-deployment created
 
 0. Verify pv created
