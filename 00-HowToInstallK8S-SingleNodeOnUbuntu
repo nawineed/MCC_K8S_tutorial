@@ -51,6 +51,7 @@ chmod +x k8s_single_node_installer.sh
 
 6. Verify K8S avalible
 kubectl version
+kubectl get node
 
 7. Allow master node to scheduler pod
 kubectl taint node mccubuntu node-role.kubernetes.io/control-plane:NoSchedule-
