@@ -4,6 +4,22 @@ vi /etc/hosts
 #Add hostname for resolve itself
 10.200.124.197 mccubuntu
 
+#Permanent disable swap
+vi /etc/fstab
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
+/dev/disk/by-id/dm-uuid-LVM-n1sKTkkJBjzfMmAuedKv8cw9mP61z0xcqqFmXUhOFSAaFCIZyDFo8EWopbtMnC6P / ext4 defaults 0 1
+# /boot was on /dev/sda2 during curtin installation
+/dev/disk/by-uuid/2809424f-fa05-4eee-8526-d8977d808d30 /boot ext4 defaults 0 1
+#/swap.img      none    swap    sw      0       0 ------------------------------------------->
+
+
 #Check OS Swap file status
 free -h
 #Swap Off
@@ -17,7 +33,7 @@ root@mccubuntu:/SWinstall# free -h
                total        used        free      shared  buff/cache   available
 Mem:            31Gi       350Mi        30Gi       1.0Mi       790Mi        30Gi
 Swap:          8.0Gi          0B       8.0Gi------------------------------------------->
-#If Swap is "on" please turn off by following command
+#If Swap is "on" please turn off by following command (temporary)
 swapoff -a
 
 2. Package requirement
