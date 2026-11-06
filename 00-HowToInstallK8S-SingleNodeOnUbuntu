@@ -57,4 +57,9 @@ kubectl get node
 kubectl taint node mccubuntu node-role.kubernetes.io/control-plane:NoSchedule-
 
 #note#
+#modify to cluster
 kubeadm token create --print-join-command
+kubeadm reset -f
+systemctl stop kubelet
+rm -rf /etc/kubernetes/*
+rm -rf /var/lib/kubelet/*
