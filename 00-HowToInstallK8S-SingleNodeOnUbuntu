@@ -55,3 +55,6 @@ kubectl get node
 
 7. Allow master node to scheduler pod
 kubectl taint node mccubuntu node-role.kubernetes.io/control-plane:NoSchedule-
+
+#note#
+kubeadm token create --print-join-command
