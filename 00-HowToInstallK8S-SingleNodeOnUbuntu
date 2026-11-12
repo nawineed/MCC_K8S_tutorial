@@ -57,9 +57,18 @@ kubectl get node
 kubectl taint node mccubuntu node-role.kubernetes.io/control-plane:NoSchedule-
 
 #note#
-#modify to cluster
+#edit K8S cluster from sigle node to 3 node
+#node 1
 kubeadm token create --print-join-command
+kubeadm join 10.200.120.191:6443 --token 6o2enb.lblzrwbwjlnoxf04 --discovery-token-ca-cert-hash sha256:f2d4db4102c53509d484c6df6be2cb3a76754ef3186d677bfcee2dd687d015fe
+#node 2,3
 kubeadm reset -f
 systemctl stop kubelet
 rm -rf /etc/kubernetes/*
 rm -rf /var/lib/kubelet/*
+#node1
+kubectl label node mccapic01 node-role.kubernetes.io/worker=worker
+kubectl label node mccapic02 node-role.kubernetes.io/control-plane=""
+kubectl label node mccapic02 node-role.kubernetes.io/worker=worker
+kubectl label node mccapic03 node-role.kubernetes.io/control-plane=""
+kubectl label node mccapic03 node-role.kubernetes.io/worker=worker
